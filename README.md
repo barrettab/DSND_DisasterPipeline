@@ -1,5 +1,5 @@
 # Disaster Response Pipeline Project Project For Udacity DSND 
-
+This project is part of Udacity's Data Science Nanodegree program.  The goal of this project is to deonstrate use of pipelines and NLP as well as deploying as webapp.  
 
 # Requirements: 
 - ptyhon 3.x
