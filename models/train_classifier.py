@@ -73,6 +73,7 @@ def build_model():
 def evaluate_model(model, y_test, y_pred, category_names,X_test):
     """
     Prints classification report 
+    model was prior cv
     """
 
     # Generate predictions
@@ -96,20 +97,23 @@ def main():
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, y, category_names = load_data(database_filepath)
         X_train,X_test,y_train,y_test= train_test_split(X, y, test_size=0.2, random_state=42)
+        print('Data Loaded Successfully')
         
         print('Building model...')
         model = build_model()
+        print('Model Built Successfully')
       
-        print('Training model...')
+        print('Training model -- this will take several minutes...')
         model.fit(X_train, y_train)
         y_pred=model.predict(X_test)
+        print('Model Trained Successfully')
         
         print('Evaluating model...')
         evaluate_model(model, y_test, y_pred, category_names,X_test)
+        print('Model Evaluation Complete')
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
-
         print('Trained model saved!')
 
     else:
