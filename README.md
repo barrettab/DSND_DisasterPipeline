@@ -1,12 +1,23 @@
-# Disaster Response Pipeline Project
+# Disaster Response Pipeline Project Project For Udacity DSND 
 
-# Project For Udacity DSND 
 
-# File Structure 
+# Requirements: 
+- ptyhon 3.x
+- pandas
+- numpy
+- re
+- pickle
+- nltk
+- sklearn
+- sqlchemy
+- flask
+
+
+# Repo File Structure 
 - app
   - template
-  - master.html  # main page of web app
-  - go.html  # classification result page of web app
+    - master.html  # main page of web app
+    - go.html  # classification result page of web app
   - run.py  # Flask file that runs app
 
 - data
@@ -17,9 +28,9 @@
 
 - models
   - train_classifier.py
-  - classifier.pkl  # saved model 
+  - classifier.pkl  # saved model (note this is note uploaded to being a very large file -- to create this on your own just follow the instructions and run the train_classifier.py)
 
->- README.md
+- README.md
 
 
 
@@ -39,13 +50,8 @@
 4. Enter in text to local hosted webapp 
 
 
-# Requirements: 
-pandas
-numpy
-re
-pickle
-nltk
-sklearn
-sqlchemy
-flask
+
+
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. Please refer to Udacity Terms of Service for further information.
 
