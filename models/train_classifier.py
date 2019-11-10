@@ -4,10 +4,14 @@ import numpy as np
 from sqlalchemy import create_engine
 import re
 import pickle
+
 import nltk
 from nltk.tokenize import word_tokenize,sent_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+nltk.download(['punkt','stopwords','wordnet'])
+
+import sklearn
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
@@ -20,11 +24,11 @@ from sklearn.metrics import precision_recall_fscore_support,accuracy_score,label
 from sklearn.model_selection  import GridSearchCV
 from sklearn import metrics
 from sklearn.metrics import classification_report, accuracy_score
-nltk.download(['punkt','stopwords','wordnet'])
+
 
 def load_data(database_filepath):
     '''
-    Load data from database as dataframe
+    Function to load data from sql database as dataframe
     '''
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table('DisasterMessages', engine)
@@ -36,7 +40,7 @@ def load_data(database_filepath):
 
 def tokenize(text):
     """
-    Function: tokenize the text   
+    Function to tokenize the text for training model 
     """
     #normalize text
     text = re.sub(r'[^a-zA-Z0-9]',' ',text.lower()) 
@@ -53,7 +57,7 @@ def tokenize(text):
     
 def build_model():
     """
-    Function: build model that consist of pipeline
+    Function to build model 
     """  
     pipeline = Pipeline([
         ('vect',TfidfVectorizer(tokenizer=tokenize)),
@@ -67,14 +71,8 @@ def build_model():
     return cv
 
 def evaluate_model(model, y_test, y_pred, category_names,X_test):
-    """Prints multi-output classification results
-    Args:
-        model (pandas dataframe): the scikit-learn fitted model
-        X_text (pandas dataframe): The X test set
-        Y_test (pandas dataframe): the Y test classifications
-        category_names (list): the category names
-    Returns:
-        None
+    """
+    Prints classification report 
     """
 
     # Generate predictions
@@ -88,8 +86,7 @@ def evaluate_model(model, y_test, y_pred, category_names,X_test):
 
 def save_model(model, model_filepath):
     '''
-    Save model as a pickle file 
-    
+    Save model as a pickle file
     '''
     pickle.dump(model, open(model_filepath, "wb"))
 
