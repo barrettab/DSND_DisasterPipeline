@@ -12,6 +12,7 @@ This project is part of Udacity's Data Science Nanodegree program.  The goal of 
 - sqlchemy
 - flask
 SQLAlchemy
+- plotly
 
 # Repo File Structure 
 - app
