@@ -11,7 +11,7 @@ This project is part of Udacity's Data Science Nanodegree program.  The goal of 
 - sklearn
 - sqlchemy
 - flask
-
+SQLAlchemy
 
 # Repo File Structure 
 - app
